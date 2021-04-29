@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace BlazingTrailsWebApp.Features.Home
+namespace BlazingTrailsWebApp.Features.Home.Components
 {
     #line hidden
     using System;
@@ -110,8 +110,7 @@ using static System.Console;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/")]
-    public partial class HomePage : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class TrailDetails : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -119,62 +118,32 @@ using static System.Console;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 50 "/Users/josemartinez/Documents/Dotnet2021/BlazingTrailsWebApp/Features/Home/HomePage.razor"
+#line 52 "/Users/josemartinez/Documents/Dotnet2021/BlazingTrailsWebApp/Features/Home/Components/TrailDetails.razor"
        
-
-	#region - ™PROPERTIES™ ☰☰☰☰☰☰☰☰☰
-
-	private IEnumerable<TrailModel> _trails;
 #nullable enable
-	private TrailModel? _selectedTrail;
-
+	//☰☰☰☰☰☰☰☰☰☰
+	#region - ™PROPERTIES™ ☰☰☰☰☰☰☰☰☰
+	private bool _isOpen;
+	[Parameter] public TrailModel? TrailDetail { get; set; }
 	#endregion ™☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰
 
-	/**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-	<HttpClient-Blazor-Methods>:
-	    • will be available as a static asset at runtime just like the CSS file,
-	      this means the path we need to pass in the GET request is simply,
-	      “trails/trail-data.json”. A great productivity enhancement which ships
-	      with Blazor is the addition of some extension methods for the HttpClient:
-			
-			• GetFromJsonAsync
-			• PostAsJsonAsync
-			• PutAsJsonAsync
+	/**  ☰☰☰☰☰☰☰☰| Functions |☰☰☰☰☰☰☰☰☰  */
+	/*-|
+	 Method invoked when the component has received parameters
+	 from its parent in the render tree, and the incoming values
+	 have been assigned to properties.
+	|-*/
+		protected override void OnParametersSet() {
+	//☰☰☰☰☰☰☰☰☰☰
+		if (TrailDetail != null) _isOpen = true;
 
-			• Under the hood, these methods are using the new System.Text.Json library.
-			  The first method will deserialize a successful response containing a JSON
-			  payload to a type we specify. The second and third will serialize an object
-			  to JSON to be sent to the server. All three of these methods do this in a 
-			  single line. No more having to manually serialized and deserialize objects or
-			  check for success codes, making everything much cleaner and removing a lot of
-			  boilerplate. One thing to be aware of when using these new methods is that when
-			  a non-success code is returned from the server, they’ll throw an exception of type
-			  HttpRequestException. This means that it’s generally a good practice to wrap these
-			  calls in a try catch statement so non-success codes can be handled gracefully.
-	━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
-	// ☰☰☰☰☰☰☰☰☰☰☰  HttpClient-Methods  ☰☰☰☰☰☰☰☰☰☰☰
-		protected override async Task OnInitializedAsync() {
-	//☰☰☰☰☰☰☰☰☰☰
-		try {
-			_trails = await Http.GetFromJsonAsync<IEnumerable<TrailModel>>(
-				"data/trail-data.json"
-				);
-	//☰☰☰☰☰☰☰☰☰☰
-		} catch(HttpRequestException e) {
-			WriteLine(
-				$"There was a problem loading trail data: {e.Message}"
-				);
-		}
+		WriteLine($"Is open?: {_isOpen}");
 	}
-
-	private void TrailSelectedEventHandler(TrailModel trail) =>
-		_selectedTrail = trail;
 
 
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient Http { get; set; }
     }
 }
 #pragma warning restore 1591

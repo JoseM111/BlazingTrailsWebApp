@@ -195,11 +195,11 @@
       "mscorlib.dll": "sha256-aRw41w\/QxOqc3NzhbK7UKf1zT6z\/oHtp9BlXl4JWwjM=",
       "netstandard.dll": "sha256-stWPH7tpmfc4JFroiKGKWcPfLQ+ALD6yQUXA9NiV0fQ=",
       "System.Private.CoreLib.dll": "sha256-PbMTdb+kswRpFmuD8S4hY70nkZ9LeYJg7y3wm7hj0CQ=",
-      "BlazingTrailsWebApp.dll": "sha256-i+3BOIhPAaGfVY4zh2XfjvDEGxe92ef68m7h5Tn5Gfo="
+      "BlazingTrailsWebApp.dll": "sha256-U9ReWyc7l3X92V20rHQzoDjmfO7TE66eqUQs+rd46bk="
     },
     "lazyAssembly": null,
     "pdb": {
-      "BlazingTrailsWebApp.pdb": "sha256-6noT8lp\/+gQhH2A0pR\/+B9jrpW7nFdxgEJ2jr0Odhqk="
+      "BlazingTrailsWebApp.pdb": "sha256-sXVtrE9PglH9v3bb\/lfQPvLWOTYguzFnk3bPHWoaTWA="
     },
     "runtime": {
       "dotnet.timezones.blat": "sha256-SQvzbzBfueaAxSKIKE1khBH02NH2MJJaWDBav\/S5MSs=",
