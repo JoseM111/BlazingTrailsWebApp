@@ -1,44 +1,81 @@
 @* ⚫️⚫️☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰  HTML  ☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰ *@
 
-<div class="card" style="width: 18rem;">
-    <img src="@Trail.Image" class="card-img-top" alt="@Trail.Name">
-    <div class="card-body">
-        <h5 class="card-title">@Trail.Name</h5>
-        <h6 class="card-subtitle mb-3 text-muted">
-	        <span class="oi oi-map-marker" />
-	        @Trail.Location
-        </h6>
-        <div class="d-flex justify-content-between">
-            <span>
-	            <span class="oi oi-clock mr-2" /> 
-	            @Trail.Time
-            </span>
-            <span>
-	            <span class="oi oi-infinity mr-2" />
-	            @Trail.Length km
-            </span>
-        </div>
-    </div>
+<div class="card" style="width: 18rem;" >
+
+	@* ☰☰☰☰☰☰☰☰| Image |☰☰☰☰☰☰☰☰☰ *@
+	<img
+		src="@Trail.Image"
+		class="card-img-top"
+		alt="@Trail.Name" />
+	
+	<div class="card-body" >
+
+		@* ☰☰☰☰☰☰☰☰| Trail-Name |☰☰☰☰☰☰☰☰☰ *@
+		<h5 class="card-title" >@Trail.Name</h5>
+
+		@* ☰☰☰☰☰☰☰☰| Trail-Location |☰☰☰☰☰☰☰☰☰ *@
+		<h6 class="card-subtitle mb-3 text-muted" >
+			<span class="oi oi-map-marker" />
+			@Trail.Location
+		</h6>
+
+		@* ☰☰☰☰☰☰☰☰| Trail-Time * Length |☰☰☰☰☰☰☰☰☰ *@
+		<div class="d-flex justify-content-between" >
+			<span>
+				<span class="oi oi-clock mr-2" />
+				@Trail.Time
+			</span>
+			<span>
+				<span class="oi oi-infinity mr-2" />
+				@Trail.Length km
+			</span>
+
+		</div>
+		
+		@* ☰☰☰☰☰☰☰☰| Button(OnSelected) |☰☰☰☰☰☰☰☰☰ *@
+		@*
+			/**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+			<Asynchronous>:
+			    • (of two or more objects or events) not
+			      existing or happening at the same time.
+			━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+		*@
+		<button 
+			class="btn btn-primary mt-3" 
+			@onclick="@(async () => await OnSelected.InvokeAsync(Trail))">
+			View
+		</button>
+		
+	</div>
 </div>
 
 @* ⚫️⚫️☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰  C#  ☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰ *@
 @*
 	/**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 	[<@parameters>]:
-	    • For our TrailCard component we’re going to create a parameter 
+	    • For our TrailDetailCard component we’re going to create a parameter 
 	      which will allow us to pass in the current trail from the parent.
 	      We can then update the razor code to use this parameter.
 	━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 *@
 @code {
-	//☰☰☰☰☰☰☰☰☰☰
+	#region - ™PROPERTIES™ ☰☰☰☰☰☰☰☰☰
 	[Parameter] public TrailModel Trail { get; set; }
+	[Parameter] public EventCallback<TrailModel> OnSelected { get; set; }
+	#endregion ™☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰
+	
+	/**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+	<Events>:	
+	  • The component parameter is now typed as EventCallback<Trail>
+	    When using EventCallback a null check is not required.
+	    It also support async handlers therefor we must invoke
+	    the event asynchronously.
+	    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+	  • NOTE: Events in Blazor are not true events in the .NET sense,
+	    they are just delegates. This goes for Blazor’s built-in DOM
+	    events system as well as events defined by developers using
+	    component parameters. This also means there can only ever be
+	    one “handler” for any given event at any given time.
+	━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 }
-
-
-
-
-
-
-
-
+@* ☰☰☰☰☰☰☰☰☰☰☰ END OFL: code{} ☰☰☰ *@

@@ -103,6 +103,13 @@ using BlazingTrailsWebApp.Features.Home.Components;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 14 "/Users/josemartinez/Documents/Dotnet2021/BlazingTrailsWebApp/_Imports.razor"
+using static System.Console;
+
+#line default
+#line hidden
+#nullable disable
     public partial class Root : LayoutComponentBase
     {
         #pragma warning disable 1998

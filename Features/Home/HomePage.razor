@@ -22,17 +22,24 @@
 *@
 @* ⚫️⚫️☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰  HTML  ☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰ *@
 
-@if(_trails == null) {
+@* ☰☰☰☰☰☰☰☰| TrailDetailDetails |☰☰☰☰☰☰☰☰☰ *@
+<TrailDetails TrailDetail="@_selectedTrail" />
+
+@* ☰☰☰☰☰☰☰☰| TrailDetailCard |☰☰☰☰☰☰☰☰☰ *@
+@if (_trails == null) {
 	<p>Loading trails...</p>
 	//☰☰☰☰☰☰☰☰☰☰
 } else {
 	//☰☰☰☰☰☰☰☰☰☰
-	<div class="row row-cols-1 row-cols-md-2">
+	<div class="row row-cols-1 row-cols-md-2" >
 		@*☰☰☰☰☰☰☰☰☰☰*@
-		@foreach(var trail in _trails) {
+		@foreach (var trail in _trails) {
 			//☰☰☰☰☰☰☰☰☰☰
-			<div class="col mb-4">
-				<TrailCard Trail="trail" />
+			<div class="col mb-4" >
+				<TrailCard
+					Trail="@trail"
+					OnSelected="@TrailSelectedEventHandler" 
+					/>
 			</div>
 		}
 	</div>
@@ -41,9 +48,15 @@
 
 @* ⚫️⚫️☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰  C#  ☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰ *@
 @code {
-	//☰☰☰☰☰☰☰☰☰☰
+
+	#region - ™PROPERTIES™ ☰☰☰☰☰☰☰☰☰
+
 	private IEnumerable<TrailModel> _trails;
-	
+#nullable enable
+	private TrailModel? _selectedTrail;
+
+	#endregion ™☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰
+
 	/**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 	<HttpClient-Blazor-Methods>:
 	    • will be available as a static asset at runtime just like the CSS file,
@@ -67,7 +80,7 @@
 			  calls in a try catch statement so non-success codes can be handled gracefully.
 	━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 	// ☰☰☰☰☰☰☰☰☰☰☰  HttpClient-Methods  ☰☰☰☰☰☰☰☰☰☰☰
-	protected override async Task OnInitializedAsync() {
+		protected override async Task OnInitializedAsync() {
 	//☰☰☰☰☰☰☰☰☰☰
 		try {
 			_trails = await Http.GetFromJsonAsync<IEnumerable<TrailModel>>(
@@ -75,10 +88,13 @@
 				);
 	//☰☰☰☰☰☰☰☰☰☰
 		} catch(HttpRequestException e) {
-			Console.WriteLine(
+			WriteLine(
 				$"There was a problem loading trail data: {e.Message}"
 				);
 		}
 	}
+
+	private void TrailSelectedEventHandler(TrailModel trail) =>
+		_selectedTrail = trail;
 
 }

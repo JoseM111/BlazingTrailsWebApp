@@ -103,6 +103,13 @@ using BlazingTrailsWebApp.Features.Home.Components;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 14 "/Users/josemartinez/Documents/Dotnet2021/BlazingTrailsWebApp/_Imports.razor"
+using static System.Console;
+
+#line default
+#line hidden
+#nullable disable
     public partial class TrailCard : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -111,10 +118,26 @@ using BlazingTrailsWebApp.Features.Home.Components;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 33 "/Users/josemartinez/Documents/Dotnet2021/BlazingTrailsWebApp/Features/Home/Components/TrailCard.razor"
+#line 61 "/Users/josemartinez/Documents/Dotnet2021/BlazingTrailsWebApp/Features/Home/Components/TrailCard.razor"
        
-	//☰☰☰☰☰☰☰☰☰☰
+	#region - ™PROPERTIES™ ☰☰☰☰☰☰☰☰☰
 	[Parameter] public TrailModel Trail { get; set; }
+	[Parameter] public EventCallback<TrailModel> OnSelected { get; set; }
+	#endregion ™☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰
+	
+	/**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+	<Events>:	
+	  • The component parameter is now typed as EventCallback<Trail>
+	    When using EventCallback a null check is not required.
+	    It also support async handlers therefor we must invoke
+	    the event asynchronously.
+	    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+	  • NOTE: Events in Blazor are not true events in the .NET sense,
+	    they are just delegates. This goes for Blazor’s built-in DOM
+	    events system as well as events defined by developers using
+	    component parameters. This also means there can only ever be
+	    one “handler” for any given event at any given time.
+	━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 
 #line default
 #line hidden

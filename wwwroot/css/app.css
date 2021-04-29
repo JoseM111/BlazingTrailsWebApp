@@ -1,50 +1,79 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
-html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+.drawer-mask {
+
+	visibility: hidden;
+	position: fixed;
+	overflow: hidden;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	z-index: 99;
+	background-color: #000000;
+	opacity: 0;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+
 }
 
-a, .btn-link {
-    color: #0366d6;
+.drawer-wrapper.slide > .drawer-mask {
+	opacity: .5;
+	visibility: visible;
 }
 
-.btn-primary {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+.drawer {
+
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 35em;
+	overflow-y: auto;
+	overflow-x: hidden;
+	background-color: white;
+	border-left: 0.063em solid gray;
+	z-index: 100;
+	transform: translateX(110%);
+	transition: transform 0.3s ease, width 0.3s ease;
+
 }
 
-.content {
-    padding-top: 1.1rem;
+.drawer-wrapper.slide > .drawer {
+	transform: translateX(0);
 }
 
-.valid.modified:not([type=checkbox]) {
-    outline: 1px solid #26b050;
+.drawer-content {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
 }
 
-.invalid {
-    outline: 1px solid red;
+.trail-details {
+	padding: 20px;
 }
 
-.validation-message {
-    color: red;
+.drawer-controls {
+	padding: 20px;
+	background-color: #ffffff;
 }
 
 #blazor-error-ui {
-    background: lightyellow;
-    bottom: 0;
-    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
-    display: none;
-    left: 0;
-    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
+	background: lightyellow;
+	bottom: 0;
+	box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+	display: none;
+	left: 0;
+	padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+	position: fixed;
+	width: 100%;
+	z-index: 1000;
 }
 
-    #blazor-error-ui .dismiss {
-        cursor: pointer;
-        position: absolute;
-        right: 0.75rem;
-        top: 0.5rem;
-    }
+#blazor-error-ui .dismiss {
+	cursor: pointer;
+	position: absolute;
+	right: 0.75rem;
+	top: 0.5rem;
+}
