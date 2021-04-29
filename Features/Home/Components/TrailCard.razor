@@ -1,0 +1,44 @@
+@* ⚫️⚫️☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰  HTML  ☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰ *@
+
+<div class="card" style="width: 18rem;">
+    <img src="@Trail.Image" class="card-img-top" alt="@Trail.Name">
+    <div class="card-body">
+        <h5 class="card-title">@Trail.Name</h5>
+        <h6 class="card-subtitle mb-3 text-muted">
+	        <span class="oi oi-map-marker" />
+	        @Trail.Location
+        </h6>
+        <div class="d-flex justify-content-between">
+            <span>
+	            <span class="oi oi-clock mr-2" /> 
+	            @Trail.Time
+            </span>
+            <span>
+	            <span class="oi oi-infinity mr-2" />
+	            @Trail.Length km
+            </span>
+        </div>
+    </div>
+</div>
+
+@* ⚫️⚫️☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰  C#  ☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰ *@
+@*
+	/**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+	[<@parameters>]:
+	    • For our TrailCard component we’re going to create a parameter 
+	      which will allow us to pass in the current trail from the parent.
+	      We can then update the razor code to use this parameter.
+	━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+*@
+@code {
+	//☰☰☰☰☰☰☰☰☰☰
+	[Parameter] public TrailModel Trail { get; set; }
+}
+
+
+
+
+
+
+
+
